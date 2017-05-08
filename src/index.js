@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ParamsExample from './ParamsExample.js';
+import AuthExample from './AuthExample.js';
 import './index.css';
 
 
 
 ReactDOM.render(
-    <ParamsExample />,
+    <AuthExample />,
     document.getElementById('root')
 );
