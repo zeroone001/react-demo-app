@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AuthExample from './AuthExample.js';
+import RecursiveExample from './RecursiveExample.js';
 import './index.css';
 
 
 
 ReactDOM.render(
-    <AuthExample />,
+    <RecursiveExample />,
     document.getElementById('root')
 );

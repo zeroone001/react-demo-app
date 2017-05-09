@@ -13,20 +13,7 @@ import {
 // 3. Log in
 // 4. Click the back button, note the URL each time
 
-const AuthExample = () => (
-  <Router>
-    <div>
-      <AuthButton/>
-      <ul>
-        <li><Link to="/public">Public Page</Link></li>
-        <li><Link to="/protected">Protected Page</Link></li>
-      </ul>
-      <Route path="/public" component={Public}/>
-      <Route path="/login" component={Login}/>
-      <PrivateRoute path="/protected" component={Protected}/>
-    </div>
-  </Router>
-)
+
 
 const fakeAuth = {
   isAuthenticated: false,
@@ -42,17 +29,20 @@ const fakeAuth = {
 
 const AuthButton = withRouter(({
   history
-}) => (
-  fakeAuth.isAuthenticated ? (
-    <p>
+}) => {
+  console.log('his', history);
+  return (
+    fakeAuth.isAuthenticated ? (
+      <p>
       Welcome! <button onClick={() => {
         fakeAuth.signout(() => history.push('/'))
       }}>Sign out</button>
     </p>
-  ) : (
-    <p>You are not logged in.</p>
-  )
-))
+    ) : (
+      <p>You are not logged in.</p>
+    )
+  );
+});
 
 const PrivateRoute = ({
   component: Component,
@@ -120,5 +110,20 @@ class Login extends React.Component {
     )
   }
 }
+
+const AuthExample = () => (
+  <Router>
+    <div>
+      <AuthButton/>
+      <ul>
+        <li><Link to="/public">Public Page</Link></li>
+        <li><Link to="/protected">Protected Page</Link></li>
+      </ul>
+      <Route path="/public" component={Public}/>
+      <Route path="/login" component={Login}/>
+      <PrivateRoute path="/protected" component={Protected}/>
+    </div>
+  </Router>
+)
 
 export default AuthExample
